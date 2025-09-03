@@ -8,6 +8,7 @@
     "dev": "bun --hot src/index.tsx",
     "format": "biome format --write",
     "lint": "biome check",
+    "lint:ci": "biome ci",
     "start": "NODE_ENV=production bun src/index.tsx",
     "tsr:generate": "tsr generate"
   },
@@ -54,8 +55,5 @@
     "@types/bun": "latest",
     "@types/react": "^19",
     "@types/react-dom": "^19"
-  },
-  "engines": {
-    "bun": "1.2.20"
   }
 }
