@@ -9,3 +9,7 @@
 ## Getting Started
 
 A knowledge management system built with Bun and shadcn/ui.
+
+## License
+
+This project is licensed under the Apache License 2.0 — see the [LICENSE](LICENSE) file for details.
