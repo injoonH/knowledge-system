@@ -6,7 +6,6 @@ import { useCallback, useEffect } from 'react'
 import { toast } from 'sonner'
 import { findDocument, updateDocument } from '@/api/document.ts'
 import { TiptapEditor } from '@/components/editor/tiptap-editor.tsx'
-import { Button } from '@/components/ui/button.tsx'
 
 export const Route = createFileRoute('/_sidebar/workspaces/$workspaceId/docs/$documentId')({
   component: DocumentPage,
