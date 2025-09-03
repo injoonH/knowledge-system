@@ -1,0 +1,150 @@
+.tiptap {
+  margin: 0 auto;
+  max-width: 70ch;
+  @apply p-10;
+  font-weight: 300;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    margin: 48px 0 16px;
+    @apply border-t;
+    padding-top: 24px;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.02em;
+  }
+
+  h3 {
+    margin: 32px 0 0;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    margin: 24px 0 0;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  p,
+  summary {
+    margin: 16px 0;
+  }
+
+  p {
+    line-height: 28px;
+  }
+
+  blockquote {
+    margin: 16px 0;
+    padding-left: 16px;
+    transition: border-color 0.5s;
+    @apply border-l-2 text-muted-foreground;
+  }
+
+  blockquote > p {
+    transition: color 0.5s;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  a {
+    cursor: pointer;
+    font-weight: 500;
+    @apply text-sky-600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition:
+      color 0.25s,
+      opacity 0.25s;
+  }
+
+  a:hover {
+    @apply text-sky-700;
+  }
+
+  strong {
+    font-weight: 500;
+  }
+
+  ul,
+  ol {
+    margin: 16px 0;
+    padding-left: 1.25rem;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  li + li {
+    margin-top: 8px;
+  }
+
+  li > p {
+    margin: 0;
+  }
+
+  li > ol,
+  li > ul {
+    margin: 8px 0 0;
+  }
+
+  hr {
+    margin: 16px 0;
+    border: none;
+    @apply border-t;
+  }
+
+  :not(pre, h1, h2, h3, h4, h5, h6) > code {
+    font-size: 0.875em;
+  }
+
+  :not(pre) > code {
+    transition:
+      color 0.25s,
+      background-color 0.5s;
+    border-radius: 4px;
+    padding: 3px 6px;
+    @apply bg-muted;
+  }
+
+  h1 > code,
+  h2 > code,
+  h3 > code,
+  h4 > code {
+    font-size: 0.9em;
+  }
+
+  p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+    @apply text-muted-foreground;
+  }
+}

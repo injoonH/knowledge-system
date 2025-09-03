@@ -1,0 +1,61 @@
+{
+  "name": "knowledge-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun run build.ts",
+    "dev": "bun --hot src/index.tsx",
+    "format": "biome format --write",
+    "lint": "biome check",
+    "start": "NODE_ENV=production bun src/index.tsx",
+    "tsr:generate": "tsr generate"
+  },
+  "dependencies": {
+    "@radix-ui/react-collapsible": "^1.1.12",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-select": "^2.2.5",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "@tanstack/react-router": "^1.131.28",
+    "@tanstack/react-router-devtools": "^1.131.31",
+    "@tanstack/zod-adapter": "^1.131.31",
+    "@tiptap/core": "^3.3.0",
+    "@tiptap/extensions": "^3.3.0",
+    "@tiptap/pm": "^3.3.0",
+    "@tiptap/react": "^3.3.0",
+    "@tiptap/starter-kit": "^3.3.0",
+    "@toss/storage": "^1.4.1",
+    "bun-plugin-tailwind": "^0.0.15",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "es-toolkit": "^1.39.10",
+    "kotlinic": "^0.5.0",
+    "lucide-react": "^0.542.0",
+    "next-themes": "^0.4.6",
+    "overlay-kit": "^1.8.5",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-hook-form": "^7.62.0",
+    "sonner": "^2.0.7",
+    "sqids": "^0.3.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.11",
+    "tailwindcss-animate": "^1.0.7",
+    "ts-pattern": "^5.8.0",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.2",
+    "@tanstack/router-cli": "^1.131.28",
+    "@types/bun": "latest",
+    "@types/react": "^19",
+    "@types/react-dom": "^19"
+  },
+  "engines": {
+    "bun": ">=1.2.20"
+  }
+}

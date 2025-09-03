@@ -1,0 +1,28 @@
+{
+  "exclude": ["dist", "node_modules"],
+  "compilerOptions": {
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "strict": true,
+    "allowImportingTsExtensions": true,
+    "baseUrl": ".",
+    "module": "Preserve",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "noEmit": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+    "jsx": "react-jsx",
+    "lib": ["ESNext", "DOM"],
+    "moduleDetection": "force",
+    "target": "ESNext",
+    "skipLibCheck": true
+  }
+}
