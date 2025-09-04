@@ -4,7 +4,7 @@ import { useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { useCallback, useEffect } from 'react'
 import { toast } from 'sonner'
-import { findDocument, updateDocument } from '@/api/document.ts'
+import { findDocument, updateDocumentJSON } from '@/api/document.ts'
 import { TiptapEditor } from '@/components/editor/tiptap-editor.tsx'
 
 export const Route = createFileRoute('/_sidebar/workspaces/$workspaceId/docs/$documentId')({
@@ -33,7 +33,7 @@ function DocumentPage() {
   })
 
   const saveDocument = useCallback(() => {
-    updateDocument({
+    updateDocumentJSON({
       id: document.id,
       json: editor.getJSON(),
     })

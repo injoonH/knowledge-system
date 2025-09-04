@@ -3,11 +3,11 @@ interface BaseTreeItem {
   name: string
 }
 
-interface FileItem extends BaseTreeItem {
+export interface FileItem extends BaseTreeItem {
   type: 'file'
 }
 
-interface DirectoryItem extends BaseTreeItem {
+export interface DirectoryItem extends BaseTreeItem {
   type: 'directory'
   items: TreeItem[]
 }

@@ -7,7 +7,10 @@ interface TabSidebarProps {
 
 function TabSidebar({ children }: TabSidebarProps) {
   return (
-    <Sidebar collapsible="none" className="hidden flex-1 md:flex">
+    <Sidebar
+      collapsible="none"
+      className="hidden w-[calc(var(--sidebar-width)-var(--sidebar-width-icon)-2px)] flex-1 md:flex"
+    >
       {children}
     </Sidebar>
   )

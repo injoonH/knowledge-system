@@ -1,13 +1,11 @@
 import { useNavigate } from '@tanstack/react-router'
 import { FilePlus } from 'lucide-react'
-import { overlay } from 'overlay-kit'
 import { createDocument } from '@/api/document.ts'
 import { getWorkspaceExplorerTree } from '@/api/workspace.ts'
+import { openFileDialog } from '@/components/sidebar/tabs/explorer/open-file-dialog.tsx'
 import { Tree } from '@/components/sidebar/tabs/explorer/tree.tsx'
 import { TabSidebar, TabSidebarHeader, TabSidebarTitle } from '@/components/sidebar/tabs/tab-sidebar.tsx'
 import { Button } from '@/components/ui/button.tsx'
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog.tsx'
-import { Input } from '@/components/ui/input.tsx'
 import { SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu } from '@/components/ui/sidebar.tsx'
 import type { Workspace } from '@/types/workspace.ts'
 
@@ -21,33 +19,22 @@ export function ExplorerSidebar({ workspace }: Props) {
   const tree = getWorkspaceExplorerTree(workspace.id)
 
   async function openNewFileDialog() {
-    const documentId = await overlay.openAsync<string | null>(({ isOpen, close }) => (
-      <Dialog open={isOpen} onOpenChange={() => close(null)}>
-        <DialogContent className="sm:max-w-sm">
-          <DialogHeader>
-            <DialogTitle>New File</DialogTitle>
-          </DialogHeader>
-          <form
-            action={(data) => {
-              const name = data.get('name') as string
-              const documentId = createDocument({
-                workspaceId: workspace.id,
-                name,
-              })
-              close(documentId)
-            }}
-          >
-            <Input name="name" type="text" placeholder="Name" required />
-          </form>
-        </DialogContent>
-      </Dialog>
-    ))
-    if (documentId === null) return
-    await navigate({
-      to: '/workspaces/$workspaceId/docs/$documentId',
-      params: {
-        workspaceId: workspace.id,
-        documentId,
+    await openFileDialog({
+      title: 'New File',
+      onSubmit(name) {
+        return createDocument({
+          workspaceId: workspace.id,
+          name,
+        })
+      },
+      onSuccess(documentId) {
+        navigate({
+          to: '/workspaces/$workspaceId/docs/$documentId',
+          params: {
+            workspaceId: workspace.id,
+            documentId,
+          },
+        })
       },
     })
   }
