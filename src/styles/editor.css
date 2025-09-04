@@ -2,7 +2,7 @@
   margin: 0 auto;
   max-width: 70ch;
   @apply p-10;
-  font-weight: 300;
+  font-weight: 350;
 
   &:focus-visible {
     outline: none;
