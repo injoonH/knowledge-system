@@ -1,4 +1,3 @@
-import { Link } from '@tanstack/react-router'
 import { Blocks, Files, Search } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { WorkspaceSwitcher } from '@/components/sidebar/workspace-switcher.tsx'
@@ -11,6 +10,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from '@/components/ui/sidebar.tsx'
 
 export const sidebarTabs = ['explorer', 'search', 'extensions'] as const
@@ -24,10 +24,13 @@ const SidebarTabIcon: Record<SidebarTab, ReactNode> = {
 }
 
 interface Props {
-  tab: SidebarTab | undefined
+  tab: SidebarTab
+  setTab(tab: SidebarTab): void
 }
 
-export function NavigationRail({ tab }: Props) {
+export function NavigationRail({ tab, setTab }: Props) {
+  const { open, setOpen } = useSidebar()
+
   return (
     <Sidebar collapsible="none" className="w-[calc(var(--sidebar-width-icon)+1px)]! border-r">
       <SidebarHeader>
@@ -45,13 +48,19 @@ export function NavigationRail({ tab }: Props) {
                       hidden: false,
                       className: 'capitalize',
                     }}
-                    isActive={tab === it}
-                    asChild
+                    onClick={() => {
+                      if (open && tab === it) {
+                        setOpen(false)
+                      } else {
+                        setOpen(true)
+                        setTab(it)
+                      }
+                    }}
+                    isActive={open && tab === it}
+                    className="px-2.5 md:px-2"
                   >
-                    <Link to="." search={{ tab: tab === it ? undefined : it }} className="px-2.5 md:px-2">
-                      {SidebarTabIcon[it]}
-                      <span className="capitalize">{it}</span>
-                    </Link>
+                    {SidebarTabIcon[it]}
+                    <span className="capitalize">{it}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

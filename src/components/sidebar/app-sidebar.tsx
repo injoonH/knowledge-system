@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { match } from 'ts-pattern'
 import { NavigationRail, type SidebarTab } from '@/components/sidebar/navigation-rail.tsx'
 import { ExplorerSidebar } from '@/components/sidebar/tabs/explorer/explorer-sidebar.tsx'
@@ -8,18 +9,18 @@ import type { Workspace } from '@/types/workspace.ts'
 
 interface Props {
   workspace: Workspace
-  tab: SidebarTab | undefined
 }
 
-export function AppSidebar({ workspace, tab }: Props) {
+export function AppSidebar({ workspace }: Props) {
+  const [tab, setTab] = useState<SidebarTab>('explorer')
+
   return (
     <Sidebar collapsible="icon" className="overflow-hidden *:data-[sidebar=sidebar]:flex-row">
-      <NavigationRail tab={tab} />
+      <NavigationRail tab={tab} setTab={setTab} />
       {match(tab)
         .with('explorer', () => <ExplorerSidebar workspace={workspace} />)
         .with('search', () => <SearchSidebar />)
         .with('extensions', () => <ExtensionsSidebar />)
-        .with(undefined, () => null)
         .exhaustive()}
     </Sidebar>
   )

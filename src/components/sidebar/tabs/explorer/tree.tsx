@@ -14,7 +14,6 @@ export function Tree({ item }: Props) {
         from="/workspaces/$workspaceId"
         to="/workspaces/$workspaceId/docs/$documentId"
         params={(it) => ({ workspaceId: it.workspaceId, documentId: item.id })}
-        search={(it) => it}
         activeProps={{
           className: 'bg-sidebar-accent font-medium text-sidebar-accent-foreground',
         }}
