@@ -17,6 +17,7 @@ export function Tree({ item }: Props) {
         activeProps={{
           className: 'bg-sidebar-accent font-medium text-sidebar-accent-foreground',
         }}
+        className="whitespace-nowrap"
       >
         <File />
         {item.name}
