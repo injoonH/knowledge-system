@@ -49,7 +49,6 @@ export function ExplorerSidebar({ workspace }: Props) {
         workspaceId: workspace.id,
         documentId,
       },
-      search: (it) => it,
     })
   }
 

@@ -41,12 +41,7 @@ export function WorkspaceSwitcher() {
             <DropdownMenuLabel className="text-muted-foreground text-xs">Workspaces</DropdownMenuLabel>
             {workspaces.map((it) => (
               <DropdownMenuItem key={it.id} asChild>
-                <Link
-                  to="/workspaces/$workspaceId"
-                  params={{ workspaceId: it.id }}
-                  search={(it) => it}
-                  className="gap-2 p-2"
-                >
+                <Link to="/workspaces/$workspaceId" params={{ workspaceId: it.id }} className="gap-2 p-2">
                   <img alt="Logo" src={it.logo} className="size-6 shrink-0 rounded-md border" />
                   {it.name}
                 </Link>
