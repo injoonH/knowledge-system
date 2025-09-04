@@ -41,12 +41,27 @@ export function createDocument(command: CreateDocumentCommand) {
   return id
 }
 
-interface UpdateDocumentCommand {
+interface UpdateDocumentNameCommand {
+  id: string
+  name: string
+}
+
+export function updateDocumentName(command: UpdateDocumentNameCommand) {
+  const documents = _getDocuments()
+
+  const document = documents[command.id]
+  if (document === undefined) throw new Error('Document not found')
+
+  const updatedDocument = { ...document, name: command.name }
+  storage.set({ ...documents, [command.id]: updatedDocument })
+}
+
+interface UpdateDocumentJSONCommand {
   id: string
   json: DocumentJSON
 }
 
-export function updateDocument(command: UpdateDocumentCommand) {
+export function updateDocumentJSON(command: UpdateDocumentJSONCommand) {
   const documents = _getDocuments()
 
   const document = documents[command.id]
